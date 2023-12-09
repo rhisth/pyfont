@@ -1,7 +1,7 @@
 import font
 
 def main():
-    font.load("basic.pyfont", "basic")
+    font.load("fonts/basic.pyfont", "basic")
     while True:
         answer = input()
         print(font.render(answer, "basic"))
