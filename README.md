@@ -1,5 +1,7 @@
 # pyfont
 
+![image](https://github.com/rhisth/pyfont/assets/96009471/5e969539-6fca-46ea-85b3-2c8d73bce6d3)
+
 библиотека для консольных шрифтов
 
 `font.load(path, name)` - загрузить шрифт по пути path с именем name
