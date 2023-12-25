@@ -17,11 +17,15 @@ def load(path, name):
     try:
         with open(path, "r", encoding="utf-8") as file:
             content = file.read().splitlines()
-        height = int(content[0])
+        text = content[0].split()
+        height = int(text[0])
+        cyrillic = int(text[1])
     except FileNotFoundError:
         raise FontNotFoundError(f'The font file by the path "{path}" was not found') from None
     except ValueError:
         raise FontFormatError(f'The font file by the path "{path}" has incorrect format') from None
+    except IndexError:
+        raise FontFormatError(f'The font file by the path "{path}" has not enough format data') from None
     flist = []
     element = ""
     i = 0
@@ -32,6 +36,9 @@ def load(path, name):
             flist.append(f"{element}")
             i = 0
             element = ""
+    if not cyrillic and not len(flist) > 161:
+        symbol = "\n" * height
+        flist += [symbol] * 66
     if len(flist) < 162:
         raise NoFontDataError(f'The font file by the path "{path}" has not enough data')
     fonts[name] = flist
