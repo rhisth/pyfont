@@ -58,5 +58,5 @@ def render(text, name):
         add = font[indexes[symbol]].splitlines()
         for i, val in enumerate(add):
             result[i] += add[i] + split[i]
-        result = "\n".join(result)
-    return result
+        result = "\n".join(result) + "\n"
+    return result[:-1]
